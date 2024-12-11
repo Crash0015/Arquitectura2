@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Hola Mundo GraphQL API
+  description: API de ejemplo con GraphQL documentada usando Swagger.
+  version: "1.0.0"
+
+servers:
+  - url: http://localhost:4000
+
+paths:
+  /:
+    get:
+      summary: Hola Mundo
+      description: Endpoint inicial que devuelve un saludo.
+      responses:
+        "200":
+          description: Respuesta exitosa
+          content:
+            text/plain:
+              schema:
+                type: string
+  /graphql:
+    post:
+      summary: Endpoint GraphQL
+      description: Permite ejecutar consultas y mutaciones GraphQL.
+      requestBody:
+        description: Cuerpo de la consulta GraphQL
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  example: |
+                    query {
+                      hola
+                    }
+      responses:
+        "200":
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                type: object
